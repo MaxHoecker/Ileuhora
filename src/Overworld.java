@@ -17,7 +17,6 @@ public class Overworld {
                     player.printInventory();
                     break;
                 case "shop":
-                    String h = new String();
                     break;
                 case "attack":
                     break;

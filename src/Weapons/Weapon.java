@@ -18,6 +18,18 @@ public abstract class Weapon {
         rand = new Random();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public int attack(){
         return rand.nextInt(dmgRange) + baseDmg;
     }

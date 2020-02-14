@@ -22,6 +22,25 @@ public class Inventory {
         weapons.add(w);
     }
 
+    public int searchForWeapon(String weaponName){
+        for(int i = 0; i < weapons.size(); i++){
+            if(weapons.get(i).getName().equals(weaponName)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int searchForPotion(String potionName, int potency){
+        for(int i = 0; i < potions.size(); i++){
+            Potion potion = potions.get(i);
+            if(potion.getEffect().equals(potionName) && potion.getPotency() == potency){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public Weapon getWeapon(int index){
         Weapon weapon = weapons.get(index);
         weapons.remove(index);
