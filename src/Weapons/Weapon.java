@@ -35,6 +35,16 @@ public abstract class Weapon {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Weapon){
+            if(((Weapon) obj).name.equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         String result = "\n";
         result += name;

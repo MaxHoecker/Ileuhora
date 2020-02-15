@@ -24,6 +24,17 @@ public abstract class Potion {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Potion)) {
+            return false;
+        }
+        if(((Potion) obj).effect.equals(this.effect) && ((Potion) obj).potency == potency){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public String toString() {
         String result = "";
         result += "Effect: " + effect + "     ";
