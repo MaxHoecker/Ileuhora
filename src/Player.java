@@ -51,11 +51,18 @@ public class Player {
     }
 
     public boolean addFunds(int money){
-        inventory.
+        int monney = inventory.getMoney();
+        inventory.setMoney(monney + money);
+        return true;
     }
 
     public boolean removeFunds(int money){
-
+        int monney = inventory.getMoney();
+        if(monney - money < 0){
+            return false;
+        }
+        inventory.setMoney(monney - money);
+        return true;
     }
 
 

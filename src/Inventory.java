@@ -41,6 +41,14 @@ public class Inventory {
         return -1;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public Weapon getWeapon(int index){
         Weapon weapon = weapons.get(index);
         weapons.remove(index);

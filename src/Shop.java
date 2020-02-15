@@ -9,5 +9,13 @@ public class Shop {
     private ArrayList<Weapon> availableWeapons;
     private ArrayList<Potion> availablePotions;
 
+    public Shop(String entryMessage) {
+        this.entryMessage = entryMessage;
+        this.availableWeapons = new ArrayList<Weapon>();
+        this.availablePotions = new ArrayList<Potion>();
+    }
 
+    public void runShop(Player player){
+
+    }
 }

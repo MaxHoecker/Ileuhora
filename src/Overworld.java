@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Overworld {
-    public void runOverworld(Player player){
+    public void runOverworld(Player player, Shop shop){
         Scanner scan = new Scanner(System.in);
         boolean runGame = true;
         helpMenu();
@@ -17,6 +17,7 @@ public class Overworld {
                     player.printInventory();
                     break;
                 case "shop":
+                    shop.runShop(player);
                     break;
                 case "attack":
                     break;
