@@ -5,6 +5,7 @@ public class Overworld {
     public void runOverworld(Player player, Shop shop){
         Scanner scan = new Scanner(System.in);
         boolean runGame = true;
+        Encounter encounter = new Encounter(player);
         helpMenu();
 
         while(runGame){
@@ -20,6 +21,7 @@ public class Overworld {
                     shop.runShop(player);
                     break;
                 case "attack":
+                    encounter.runEncounter(false);
                     break;
             }
 

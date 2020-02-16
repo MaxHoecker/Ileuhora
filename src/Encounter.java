@@ -1,7 +1,4 @@
-import Enemies.Enemy;
-import Enemies.GiantBat;
-import Enemies.Gurtrude;
-import Enemies.Wolf;
+import Enemies.*;
 
 import java.util.Random;
 
@@ -15,30 +12,42 @@ public class Encounter {
         this.enemy = null;
     }
 
-    public void runEncounter(){
-
+    public void runEncounter(boolean enterBoss){
+        makeEnemy(enterBoss);
     }
 
-    public void initializeEnemyPhase1(){
-
+    private void makeEnemy(boolean enterBoss){
+        if(enterBoss){
+            if(player.getPhase() == 1){
+                makeBoss1();
+            }
+        }
+        else{
+            if(player.getPhase() == 1){
+                makeBoss1();
+            }
+        }
     }
 
-    public Enemy makeEnemy1(){
-        Random rand = new Random();
+    private void makeBoss1(){
         if(player.getDefeatedEnemies() >= PHASE1COUNT){
             Enemy enemy = new Gurtrude();
         }
-        else{
-            int whichEnemy = rand.nextInt(3);
-            if(whichEnemy == 0){
-                Enemy enemy = new Wolf();
-            }
-            else if(whichEnemy == 1){
-                Enemy enemy = new GiantBat();
-            }
-            else if(whichEnemy == 2){
+    }
 
-            }
+    private Enemy makeMonster1(){
+        Random rand = new Random();
+
+        int whichEnemy = rand.nextInt(3);
+        if(whichEnemy == 0){
+            Enemy enemy = new Wolf();
+        }
+        else if(whichEnemy == 1){
+            Enemy enemy = new GiantBat();
+        }
+        else if(whichEnemy == 2){
+            Enemy enemy = new WoodNymph();
+
         }
         return enemy;
     }

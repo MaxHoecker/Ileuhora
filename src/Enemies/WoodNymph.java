@@ -1,4 +1,4 @@
 package Enemies;
 
-public class WoodNymph {
+public class WoodNymph extends Monster {
 }
