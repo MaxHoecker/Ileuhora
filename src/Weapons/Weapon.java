@@ -47,6 +47,11 @@ public abstract class Weapon implements Item {
     }
 
     @Override
+    public Weapon clone() throws CloneNotSupportedException {
+        return null;
+    }
+
+    @Override
     public String toString() {
         String result = "";
         result += name + "     ";

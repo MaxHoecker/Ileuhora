@@ -33,63 +33,57 @@ public class Shop {
             System.out.println(navigationMessage(player));
             String input = scan.nextLine();
             input = input.toLowerCase();
-            switch (input){
-                case "exit":
-                    runShop = false;
-                    break;
-                case "heals":
-                    Potion healing = new HealingPotionS();
-                    String purchased = purchaseItem(healing, player);
-                    System.out.println(purchased);
-                    break;
-                case "wood":
-                    break;
-                case "s":
-                    player.addFunds(10);
-                    break;
+            if (input.equals("exit")) {
+                runShop = false;
+            }
+            else if(input.equals("gimme money!")) {
+                player.addFunds(1);
+            }
+            else{
+                String purchased = purchaseItem(input, player);
+                System.out.println(purchased);
             }
         }
         System.out.println("Stop by again later!");
     }
 
-    public boolean stockShop1(){
-        Weapon wood = new WoodenSword();
-        boolean stockedWeapon = addWeaponToShop(wood);
 
-        Potion heal1 = new HealingPotionS();
-        boolean stockedPotion = addPotionToShop(heal1);
-
-        boolean stocked = stockedWeapon || stockedPotion;
-        return stocked;
-    }
 
     /**
      * =====================================================================
      *                   item management
      * =====================================================================
      */
-    public boolean containsItem(Item item){
-        if(item instanceof Potion){
-            for (int i = 0; i < availablePotions.size(); i++){
-                if(availablePotions.get(i).equals(item)){
-                    return true;
+    public Item getItem(String itemName){
+        for (int i = 0; i < availablePotions.size(); i++){
+            if(availablePotions.get(i).getName().equalsIgnoreCase(itemName)){
+                try{
+                    Item item = (Potion)availablePotions.get(i).clone();
+                    return item;
+                }
+                catch (Exception e){
+                    System.err.println(e);
                 }
             }
-            return false;
         }
-        else if(item instanceof Weapon){
-            for (int i = 0; i < availableWeapons.size(); i++){
-                if(availableWeapons.get(i).equals(item)){
-                    return true;
+
+        for (int i = 0; i < availableWeapons.size(); i++){
+            if(availableWeapons.get(i).getName().equalsIgnoreCase(itemName)){
+                try{
+                    Item item = (Weapon)availableWeapons.get(i).clone();
+                    return item;
+                }
+                catch (Exception e){
+                    System.err.println(e);
                 }
             }
-            return false;
         }
-        return false;
+        return null;
     }
 
-    public String purchaseItem(Item item, Player player){
-        if(!containsItem(item)){
+    public String purchaseItem(String itemName, Player player){
+        Item item = getItem(itemName);
+        if(item == null){
             return "Sorry bub, we aint got that here.";
         }
         if(!availableFunds(item, player)){
@@ -114,6 +108,42 @@ public class Shop {
             return true;
         }
         return false;
+    }
+
+    /**
+     * =====================================================================
+     *                   stocking the shop management
+     * =====================================================================
+     */
+    public boolean containsItem(Item item){
+        if(item instanceof Potion){
+            for (int i = 0; i < availablePotions.size(); i++){
+                if(availablePotions.get(i).equals(item)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if(item instanceof Weapon){
+            for (int i = 0; i < availableWeapons.size(); i++){
+                if(availableWeapons.get(i).equals(item)){
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+    public boolean stockShop1(){
+        Weapon wood = new WoodenSword();
+        boolean stockedWeapon = addWeaponToShop(wood);
+
+        Potion heal1 = new HealingPotionS();
+        boolean stockedPotion = addPotionToShop(heal1);
+
+        boolean stocked = stockedWeapon || stockedPotion;
+        return stocked;
     }
 
     public boolean addWeaponToShop(Weapon weapon){

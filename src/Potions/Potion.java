@@ -7,12 +7,14 @@ public abstract class Potion implements Item {
     private String effect;
     private int cost;
     private String name;
+    private String description;
 
-    public Potion(int potency, String effect, int cost, String name) {
+    public Potion(int potency, String effect, int cost, String name, String description) {
         this.potency = potency;
         this.effect = effect;
         this.cost = cost;
         this.name = name;
+        this.description = description;
     }
 
     public int getPotency(){
@@ -31,6 +33,8 @@ public abstract class Potion implements Item {
         return name;
     }
 
+    public String getDescription(){return description;}
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Potion)) {
@@ -40,6 +44,11 @@ public abstract class Potion implements Item {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Potion clone() throws CloneNotSupportedException {
+        return null;
     }
 
     @Override
