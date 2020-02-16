@@ -1,7 +1,9 @@
 package Weapons;
+import Interfaces.Item;
+
 import java.util.Random;
 
-public abstract class Weapon {
+public abstract class Weapon implements Item {
     private String name;
     private int baseDmg;
     private int dmgRange;
@@ -46,10 +48,10 @@ public abstract class Weapon {
 
     @Override
     public String toString() {
-        String result = "\n";
-        result += name;
-        result += "Damage range: " + baseDmg + "-" + (baseDmg + dmgRange);
-        result += "Value: " + cost;
+        String result = "";
+        result += name + "     ";
+        result += "Damage range: " + baseDmg + "-" + (baseDmg + dmgRange) + "     ";
+        result += "Value: " + cost + "     ";
 
         return result;
     }

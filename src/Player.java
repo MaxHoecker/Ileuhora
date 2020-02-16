@@ -67,6 +67,16 @@ public class Player {
         return true;
     }
 
+    public boolean addPotion(Potion potion){
+        inventory.addPotion(potion);
+        return true;
+    }
+
+    public boolean addWeapon(Weapon weapon){
+        inventory.addWeapon(weapon);
+        return false;
+    }
+
 
     /***
     * ======================================================================

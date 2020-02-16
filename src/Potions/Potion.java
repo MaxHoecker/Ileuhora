@@ -1,14 +1,18 @@
 package Potions;
 
-public abstract class Potion {
+import Interfaces.Item;
+
+public abstract class Potion implements Item {
     private int potency;
     private String effect;
     private int cost;
+    private String name;
 
-    public Potion(int potency, String effect, int cost) {
+    public Potion(int potency, String effect, int cost, String name) {
         this.potency = potency;
         this.effect = effect;
         this.cost = cost;
+        this.name = name;
     }
 
     public int getPotency(){
@@ -21,6 +25,10 @@ public abstract class Potion {
 
     public int getCost() {
         return cost;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
