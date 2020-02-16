@@ -2,7 +2,7 @@ package Potions;
 
 public class HealingPotionS extends Potion {
     public HealingPotionS() {
-        super(10, "Healing", 10, "Small Healing Potion", "just a small healing potion");
+        super(10, "Healing", 10, "Small Healing Potion", "it's just a small healing potion");
     }
 
     @Override

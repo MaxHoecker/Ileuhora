@@ -99,7 +99,7 @@ public class Shop {
         }
         else return "Uuuuhhhhh, not sure what happened here.";
 
-        return "You have successfully purchased " + item.getName();
+        return "You have successfully purchased " + item.getName() + ", " + item.getDescription();
     }
 
 

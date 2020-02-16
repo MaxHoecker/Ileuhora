@@ -52,6 +52,14 @@ public class Player {
         return true;
     }
 
+    public boolean hasPotion(){
+        return false;
+    }
+
+    public boolean hasWeapon(){
+        return false;
+    }
+
     public boolean addFunds(int money){
         int monney = inventory.getMoney();
         inventory.setMoney(monney + money);
