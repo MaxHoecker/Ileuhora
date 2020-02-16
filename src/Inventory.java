@@ -65,17 +65,34 @@ public class Inventory {
     public String toString() {
         String result = "";
         result += "===============Money===============\n";
-        result += (money+"\n");
+        if(money == 0){
+            result += "You have no money!\n";
+        }
+        else{
+            result += ("You have: " + money + " money\n");
+        }
+
         result += "===============Weapons===============\n";
-        for (int i = 0; i < weapons.size(); i++) {
-            result += weapons.get(i).toString();
-            result += "\n";
+        if(weapons.size() == 0){
+            result += "You have no weapons in your bag!\n";
+        }
+        else {
+            for (int i = 0; i < weapons.size(); i++) {
+                result += weapons.get(i).toString();
+                result += "\n";
+            }
         }
         result += "===============Potions===============\n";
-        for (int i = 0; i < potions.size(); i++) {
-            result += potions.get(i).toString();
-            result += "\n";
+        if (potions.size() == 0){
+            result += "You have no potions in your bag!\n";
         }
+        else{
+            for (int i = 0; i < potions.size(); i++) {
+                result += potions.get(i).toString();
+                result += "\n";
+            }
+        }
+
         return result;
     }
 }

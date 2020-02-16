@@ -6,6 +6,7 @@ public class Player {
     private int maxHealth;
     private int currentHealth;
     private int defeatedEnemies;
+    private int phase;
     private boolean blocking;
 
     private Weapon equippedWeapon;
@@ -15,6 +16,7 @@ public class Player {
         this.maxHealth = 100;
         this.currentHealth = maxHealth;
         this.defeatedEnemies = 0;
+        phase = 1;
         this.blocking = false;
         this.inventory = new Inventory();
         this.equippedWeapon = new WoodenSword();
@@ -71,6 +73,9 @@ public class Player {
      *                     Getters and Setters
      * =====================================================================
     * */
+    public int getMoney(){
+        return inventory.getMoney();
+    }
 
     public int getMaxHealth() {
         return maxHealth;
@@ -116,4 +121,11 @@ public class Player {
         System.out.println(inventory.toString());
     }
 
+    public int getPhase() {
+        return phase;
+    }
+
+    public void setPhase(int phase) {
+        this.phase = phase;
+    }
 }
