@@ -53,7 +53,7 @@ public abstract class Potion implements Item {
 
     @Override
     public String toString() {
-        String result = "";
+        String result = "\"" + name + "\"     ";
         result += "Effect: " + effect + "     ";
         result += "Potency: " + potency + "     ";
         result += "Value: " + cost + "     ";

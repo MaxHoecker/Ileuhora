@@ -54,7 +54,7 @@ public abstract class Weapon implements Item {
     @Override
     public String toString() {
         String result = "";
-        result += name + "     ";
+        result += "\"" + name + "\"     ";
         result += "Damage range: " + baseDmg + "-" + (baseDmg + dmgRange) + "     ";
         result += "Value: " + cost + "     ";
 

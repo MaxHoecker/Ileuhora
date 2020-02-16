@@ -172,11 +172,13 @@ public class Shop {
         String commands = "";
         commands += "\n*==============================*\n";
         commands += "------------------------\n";
-        commands += "*Take a pick from our finest wares \n";
+        commands += "Take a pick from our finest wares, to purchase an item type what is in the quotation marks \n";
+        commands += "To purchase an item, type what is in the quotation marks\n";
+        commands += "To exit the shop, type \"exit\"\n";
         commands += "------------------------\n\n";
         commands += toString();
         commands += "\n------------------------\n";
-        commands += "*Your money is " + player.getMoney() + " gold pieces";
+        commands += "Your money is " + player.getMoney() + " gold pieces";
         commands += "\n------------------------\n";
         commands += "\n*==============================*\n\n";
         return commands;
