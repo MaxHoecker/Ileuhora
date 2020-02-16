@@ -39,11 +39,13 @@ public class Shop {
                     break;
                 case "heals":
                     Potion healing = new HealingPotionS();
-
+                    String purchased = purchaseItem(healing, player);
+                    System.out.println(purchased);
                     break;
                 case "wood":
                     break;
                 case "s":
+                    player.addFunds(10);
                     break;
             }
         }
@@ -86,27 +88,29 @@ public class Shop {
         return false;
     }
 
-    public boolean purchaseItem(Item item, Player player){
+    public String purchaseItem(Item item, Player player){
         if(!containsItem(item)){
-            return false;
+            return "Sorry bub, we aint got that here.";
         }
         if(!availableFunds(item, player)){
-            return false;
+            return "You need more money!";
         }
         if(item instanceof Potion){
             player.addPotion((Potion)item);
+            player.removeFunds(item.getCost());
         }
         else if (item instanceof Weapon){
             player.addWeapon((Weapon)item);
+            player.removeFunds(item.getCost());
         }
-        else return false;
+        else return "Uuuuhhhhh, not sure what happened here.";
 
-        return true;
+        return "You have successfully purchased " + item.getName();
     }
 
 
     public boolean availableFunds(Item item, Player player){
-        if(player.getMoney() > item.getCost()){
+        if(player.getMoney() >= item.getCost()){
             return true;
         }
         return false;
