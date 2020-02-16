@@ -32,9 +32,6 @@ public abstract class Weapon implements Item {
         return description;
     }
 
-    public int attack(){
-        return rand.nextInt(dmgRange) + baseDmg;
-    }
 
     @Override
     public boolean equals(Object obj) {

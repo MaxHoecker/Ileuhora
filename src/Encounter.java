@@ -1,6 +1,7 @@
 import Enemies.*;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Encounter {
     final static int PHASE1COUNT = 20;
@@ -14,6 +15,11 @@ public class Encounter {
 
     public void runEncounter(boolean enterBoss){
         makeEnemy(enterBoss);
+        boolean inEncounter = true;
+        Scanner scan = new Scanner(System.in);
+        while (inEncounter){
+            inEncounter = false;
+        }
     }
 
     private void makeEnemy(boolean enterBoss){
@@ -24,7 +30,7 @@ public class Encounter {
         }
         else{
             if(player.getPhase() == 1){
-                makeBoss1();
+                makeMonster1();
             }
         }
     }

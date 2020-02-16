@@ -24,6 +24,16 @@ public class Player {
 
     /**
      * =====================================================================
+     *                      combat management
+     * =====================================================================
+     */
+    public int attack(String attackName){
+
+    }
+
+
+    /**
+     * =====================================================================
      *                      inventory management
      * =====================================================================
      */
@@ -123,9 +133,6 @@ public class Player {
         return equippedWeapon;
     }
 
-    public void setEquippedWeapon(Weapon equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
-    }
 
     public void printInventory(){
         System.out.println(inventory.toString());
