@@ -172,7 +172,7 @@ public class Shop {
         String commands = "";
         commands += "\n*==============================*\n";
         commands += "------------------------\n";
-        commands += "Take a pick from our finest wares, to purchase an item type what is in the quotation marks \n";
+        commands += "Take a pick from our finest wares\n";
         commands += "To purchase an item, type what is in the quotation marks\n";
         commands += "To exit the shop, type \"exit\"\n";
         commands += "------------------------\n\n";

@@ -14,7 +14,7 @@ public class Overworld {
                     helpMenu();
                     break;
                 case "inv":
-                    player.printInventory();
+                    player.enterInventory();
                     break;
                 case "shop":
                     shop.runShop(player);

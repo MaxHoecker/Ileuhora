@@ -25,7 +25,28 @@ public class Inventory {
         String input = "";
         while(inInventory){
             System.out.println(inventoryMessage());
+            System.out.println(toString());
             input = scan.nextLine().toLowerCase();
+            String[] fields = input.split(", ");
+            switch (fields[0]){
+                case "exit":
+                    inInventory = false;
+                    break;
+                case "equip":
+                    boolean equipped = equipWeapon(fields[1]);
+                    if(equipped){
+                        System.out.println("Successfully equipped");
+                    }
+                    else{
+                        System.out.println("Sorry, but you don't seem to have a weapon by that name");
+                    }
+                    break;
+                case "drink":
+                    break;
+                default:
+                    System.out.println("that doesn't seem to be a proper command");
+            }
+
         }
     }
 
@@ -52,7 +73,7 @@ public class Inventory {
 
     public int searchForWeapon(String weaponName){
         for(int i = 0; i < weapons.size(); i++){
-            if(weapons.get(i).getName().equals(weaponName)){
+            if(weapons.get(i).getName().equalsIgnoreCase(weaponName)){
                 return i;
             }
         }
@@ -62,7 +83,7 @@ public class Inventory {
     public int searchForPotion(String potionName){
         for(int i = 0; i < potions.size(); i++){
             Potion potion = potions.get(i);
-            if(potion.getEffect().equals(potionName)){
+            if(potion.getEffect().equalsIgnoreCase(potionName)){
                 return i;
             }
         }
@@ -97,8 +118,8 @@ public class Inventory {
         String result = "";
         result += "This is your inventory, please type one of the following commands\n";
         result += "\"exit\" to exit your inventory\n";
-        result += "\"equip [Weapon name]\" to equip a weapon\n";
-        result += "\"drink [Potion name]\" to drink a potion\n";
+        result += "\"equip, [Weapon name]\" to equip a weapon\n";
+        result += "\"drink, [Potion name]\" to drink a potion\n";
 
         return result;
     }

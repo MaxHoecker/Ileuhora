@@ -25,7 +25,9 @@ public class Player {
      *                      inventory management
      * =====================================================================
      */
-
+    public void enterInventory(){
+        inventory.runInventory();
+    }
 
     public boolean usePotion(String potionName){
         int potionIndex = inventory.searchForPotion(potionName);
