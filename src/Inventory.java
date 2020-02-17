@@ -1,9 +1,12 @@
-import Potions.Potion;
-import Weapons.Weapon;
+import Potions.*;
+import Weapons.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Inventory {
+
+    private Weapon equippedWeapon;
     private ArrayList<Weapon> weapons;
     private ArrayList<Potion> potions;
     private int money;
@@ -12,7 +15,32 @@ public class Inventory {
         money = 0;
         weapons = new ArrayList<Weapon>();
         potions = new ArrayList<Potion>();
+        this.equippedWeapon = new WoodenSword();
+
     }
+
+    public void runInventory(){
+        boolean inInventory = true;
+        Scanner scan = new Scanner(System.in);
+        String input = "";
+        while(inInventory){
+            System.out.println(inventoryMessage());
+            input = scan.nextLine().toLowerCase();
+        }
+    }
+
+    public boolean equipWeapon(String weaponName){
+        int weaponIndex = searchForWeapon(weaponName);
+        if(weaponIndex == -1){
+            return false;
+        }
+        Weapon equip = getWeapon(weaponIndex);
+        addWeapon(equippedWeapon);
+        equippedWeapon = equip;
+
+        return true;
+    }
+
 
     public void addPotion(Potion p){
         potions.add(p);
@@ -31,10 +59,10 @@ public class Inventory {
         return -1;
     }
 
-    public int searchForPotion(String potionName, int potency){
+    public int searchForPotion(String potionName){
         for(int i = 0; i < potions.size(); i++){
             Potion potion = potions.get(i);
-            if(potion.getEffect().equals(potionName) && potion.getPotency() == potency){
+            if(potion.getEffect().equals(potionName)){
                 return i;
             }
         }
@@ -49,6 +77,10 @@ public class Inventory {
         this.money = money;
     }
 
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
     public Weapon getWeapon(int index){
         Weapon weapon = weapons.get(index);
         weapons.remove(index);
@@ -59,6 +91,16 @@ public class Inventory {
         Potion potion = potions.get(index);
         potions.remove(index);
         return potion;
+    }
+
+    private String inventoryMessage(){
+        String result = "";
+        result += "This is your inventory, please type one of the following commands\n";
+        result += "\"exit\" to exit your inventory\n";
+        result += "\"equip [Weapon name]\" to equip a weapon\n";
+        result += "\"drink [Potion name]\" to drink a potion\n";
+
+        return result;
     }
 
     @Override

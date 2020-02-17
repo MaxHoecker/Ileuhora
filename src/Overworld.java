@@ -10,7 +10,7 @@ public class Overworld {
         while(runGame){
             String input = scan.nextLine();
             switch (input){
-                case "h":
+                case "help":
                     helpMenu();
                     break;
                 case "inv":
@@ -27,9 +27,9 @@ public class Overworld {
     }
 
     private void helpMenu(){
-        System.out.println("h - for help");
-        System.out.println("inv - for inventory");
-        System.out.println("shop - for the shop");
-        System.out.println("attack - to encounter a random enemy");
+        System.out.println("\"help\" - for help");
+        System.out.println("\"inv\" - for inventory");
+        System.out.println("\"shop\" - for the shop");
+        System.out.println("\"attack\" - to encounter a random enemy");
     }
 }

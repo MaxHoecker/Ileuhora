@@ -9,7 +9,6 @@ public class Player {
     private int phase;
     private boolean blocking;
 
-    private Weapon equippedWeapon;
     private Inventory inventory;
 
     public Player() {
@@ -19,7 +18,6 @@ public class Player {
         phase = 1;
         this.blocking = false;
         this.inventory = new Inventory();
-        this.equippedWeapon = new WoodenSword();
     }
 
     /**
@@ -27,20 +25,10 @@ public class Player {
      *                      inventory management
      * =====================================================================
      */
-    public boolean equipWeapon(String weaponName){
-        int weaponIndex = inventory.searchForWeapon(weaponName);
-        if(weaponIndex == -1){
-            return false;
-        }
-        Weapon equip = inventory.getWeapon(weaponIndex);
-        inventory.addWeapon(equippedWeapon);
-        equippedWeapon = equip;
 
-        return true;
-    }
 
-    public boolean usePotion(String potionName, int potency){
-        int potionIndex = inventory.searchForPotion(potionName, potency);
+    public boolean usePotion(String potionName){
+        int potionIndex = inventory.searchForPotion(potionName);
         if (potionIndex == -1) {
             return false;
         }
@@ -52,8 +40,11 @@ public class Player {
         return true;
     }
 
-    public boolean hasPotion(){
-        return false;
+    public boolean hasPotion(String potionName){
+        if(inventory.searchForPotion(potionName) == -1){
+            return false;
+        }
+        return true;
     }
 
     public boolean hasWeapon(){
@@ -91,6 +82,10 @@ public class Player {
      *                     Getters and Setters
      * =====================================================================
     * */
+    public Weapon getWeapon(){
+        return inventory.getEquippedWeapon();
+    }
+
     public int getMoney(){
         return inventory.getMoney();
     }
@@ -127,18 +122,6 @@ public class Player {
         this.blocking = blocking;
     }
 
-    public Weapon getEquippedWeapon() {
-        return equippedWeapon;
-    }
-
-    public void setEquippedWeapon(Weapon equippedWeapon) {
-        this.equippedWeapon = equippedWeapon;
-    }
-
-    public void printInventory(){
-        System.out.println(inventory.toString());
-    }
-
     public int getPhase() {
         return phase;
     }
@@ -146,4 +129,9 @@ public class Player {
     public void setPhase(int phase) {
         this.phase = phase;
     }
+
+    public void printInventory(){
+        System.out.println(inventory.toString());
+    }
+
 }
