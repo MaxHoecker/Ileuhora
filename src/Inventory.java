@@ -26,14 +26,16 @@ public class Inventory {
         while(inInventory){
             System.out.println(inventoryMessage());
             System.out.println(toString());
+
             input = scan.nextLine().toLowerCase();
-            String[] fields = input.split(", ");
-            switch (fields[0]){
+            String[] handledInput = handleInput(input);
+
+            switch (handledInput[0]){
                 case "exit":
                     inInventory = false;
                     break;
                 case "equip":
-                    boolean equipped = equipWeapon(fields[1]);
+                    boolean equipped = equipWeapon(handledInput[1]);
                     if(equipped){
                         System.out.println("Successfully equipped");
                     }
@@ -114,12 +116,27 @@ public class Inventory {
         return potion;
     }
 
+    private String[] handleInput(String input){
+        String[] fields = input.split(" ");
+        String command = fields[0];
+        String[] itemNameArr = new String[fields.length-1];
+        for(int i = 0; i < fields.length-1; i++){
+            itemNameArr[i] = fields[i+1];
+        }
+        String itemName = String.join(" ", itemNameArr);
+
+        String[] output = new String[2];
+        output[0] = command;
+        output[1] = itemName;
+        return output;
+    }
+
     private String inventoryMessage(){
         String result = "";
         result += "This is your inventory, please type one of the following commands\n";
         result += "\"exit\" to exit your inventory\n";
-        result += "\"equip, [Weapon name]\" to equip a weapon\n";
-        result += "\"drink, [Potion name]\" to drink a potion\n";
+        result += "\"equip [Weapon name]\" to equip a weapon\n";
+        result += "\"drink [Potion name]\" to drink a potion\n";
 
         return result;
     }
@@ -127,6 +144,15 @@ public class Inventory {
     @Override
     public String toString() {
         String result = "";
+
+        result += "==========Equipped Weapon==========\n";
+        if(equippedWeapon == null){
+            result += "You have no weapon equipped!\n";
+        }
+        else{
+            result += ("You have: \"" + equippedWeapon.getName() + "\" equipped\n");
+        }
+
         result += "===============Money===============\n";
         if(money == 0){
             result += "You have no money!\n";
