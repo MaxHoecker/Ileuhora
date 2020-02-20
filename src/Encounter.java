@@ -37,7 +37,7 @@ public class Encounter {
 
     private void makeBoss1(){
         if(player.getDefeatedEnemies() >= PHASE1COUNT){
-            Enemy enemy = new Gurtrude();
+            Enemy enemy = new Gurtrude(500, 3);
         }
     }
 

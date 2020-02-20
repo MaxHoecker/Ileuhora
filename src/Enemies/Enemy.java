@@ -15,6 +15,8 @@ public abstract class Enemy {
         return true;
     }
 
+    public abstract int attack();
+
     public void takeDamage(int damage){
         currentHealth -= damage;
     }

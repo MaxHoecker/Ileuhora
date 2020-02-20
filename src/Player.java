@@ -28,7 +28,7 @@ public class Player {
      * =====================================================================
      */
     public int attack(String attackName){
-
+        return 0;
     }
 
 
