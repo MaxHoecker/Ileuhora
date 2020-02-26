@@ -7,6 +7,11 @@ public class WoodNymph extends Monster {
 
     @Override
     public int attack() {
-        return 0;
+        return 10;
+    }
+
+    @Override
+    public String toString() {
+        return "Me a wood nymph";
     }
 }

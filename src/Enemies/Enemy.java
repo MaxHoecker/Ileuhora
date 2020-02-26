@@ -6,6 +6,7 @@ public abstract class Enemy {
 
     public Enemy(int maxHealth) {
         this.maxHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public boolean isAlive(){

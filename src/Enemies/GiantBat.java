@@ -6,12 +6,11 @@ public class GiantBat extends Monster {
     }
 
     public int attack(){
-        System.out.println(super.toString());
-        return 0;
+        return 10;
     }
 
     @Override
     public String toString() {
-        return "H";
+        return "I am a giant bat";
     }
 }

@@ -25,8 +25,8 @@ public class Player {
      *                      combat management
      * =====================================================================
      */
-    public int attack(String attackName){
-        return 0;
+    public int attack(){
+        return 10;
     }
 
 
